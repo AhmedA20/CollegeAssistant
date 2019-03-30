@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "605659822578",
+    "firebase_url": "https://collegeassistant-621d8.firebaseio.com",
+    "project_id": "collegeassistant-621d8",
+    "storage_bucket": "collegeassistant-621d8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:605659822578:android:20f3b0631ddcff43",
+        "android_client_info": {
+          "package_name": "com.example.collegeassistant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "605659822578-vnq407venn9oivdhfmt21htla30m3hlm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0tZgzxHMWzewChPfTx9LxOf4hbVQRScM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
