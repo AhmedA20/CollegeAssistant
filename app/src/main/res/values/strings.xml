@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">College Assistant</string>
-    <string name="usrename">Usrename</string>
     <string name="password">Password</string>
     <string name="sign_up">Sign Up</string>
     <string name="forget_password">Forget Password</string>
