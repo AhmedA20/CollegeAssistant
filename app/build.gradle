@@ -29,6 +29,13 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-core:16.0.8'
     implementation 'com.google.firebase:firebase-auth:16.2.0'
+    implementation 'com.google.firebase:firebase-database:16.1.0'//realTime database
+
+    // Include the sdk as a dependency
+    implementation('com.microsoft.graph:msgraph-sdk-android:1.2.+')
+
+    // Include the gson dependency
+    implementation('com.google.code.gson:gson:2.3.1')
 
    
 }

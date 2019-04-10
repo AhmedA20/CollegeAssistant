@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "605659822578-ebu927tvt6valrd2jpbt1s7rv5kgge2s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.collegeassistant",
+            "certificate_hash": "78e4d78f45d18658a27784fd8d17db9a9299829b"
+          }
+        },
+        {
           "client_id": "605659822578-vnq407venn9oivdhfmt21htla30m3hlm.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -25,15 +33,13 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "605659822578-vnq407venn9oivdhfmt21htla30m3hlm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
