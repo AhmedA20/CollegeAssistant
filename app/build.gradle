@@ -31,12 +31,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:16.2.0'
     implementation 'com.google.firebase:firebase-database:16.1.0'//realTime database
 
-    // Include the sdk as a dependency
-    implementation('com.microsoft.graph:msgraph-sdk-android:1.2.+')
+    // Displaying images
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
 
-    // Include the gson dependency
-    implementation('com.google.code.gson:gson:2.3.1')
 
-   
 }
 apply plugin: 'com.google.gms.google-services'
