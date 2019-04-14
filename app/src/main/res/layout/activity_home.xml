@@ -10,6 +10,7 @@
     android:background="@drawable/grad_bg"
     android:gravity="center"
     android:id="@+id/ll">
+
     <LinearLayout
         android:clipToPadding="false"
         android:gravity="center"
@@ -19,10 +20,11 @@
         <android.support.v7.widget.CardView
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
-            android:id="@+id/bankcardId"
+            android:id="@+id/subject"
             android:layout_width="160dp"
             android:layout_height="190dp"
             android:layout_margin="10dp"
+            android:onClick="onClick"
             android:background="@drawable/layout_child">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -55,12 +57,15 @@
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
+
         <android.support.v7.widget.CardView
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:layout_width="160dp"
             android:layout_height="190dp"
             android:layout_margin="10dp"
+            android:id="@+id/table"
+            android:onClick="onClick"
             android:background="@drawable/layout_child">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -95,6 +100,7 @@
         </android.support.v7.widget.CardView>
 
     </LinearLayout>
+
     <LinearLayout
         android:clipToPadding="false"
         android:gravity="center"
@@ -107,6 +113,8 @@
             android:layout_width="160dp"
             android:layout_height="190dp"
             android:layout_margin="10dp"
+            android:id="@+id/grade"
+            android:onClick="onClick"
             android:background="@drawable/layout_child">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -139,12 +147,15 @@
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
+
         <android.support.v7.widget.CardView
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:layout_width="160dp"
             android:layout_height="190dp"
             android:layout_margin="10dp"
+            android:id="@+id/chat"
+            android:onClick="onClick"
             android:background="@drawable/layout_child">
 
             <LinearLayout
@@ -184,6 +195,7 @@
         </android.support.v7.widget.CardView>
 
     </LinearLayout>
+
     <LinearLayout
         android:clipToPadding="false"
         android:gravity="center"
@@ -196,6 +208,8 @@
             android:layout_width="340dp"
             android:layout_height="150dp"
             android:layout_margin="10dp"
+            android:id="@+id/att"
+            android:onClick="onClick"
             android:background="@drawable/layout_child">
             <LinearLayout
                 android:layout_width="match_parent"

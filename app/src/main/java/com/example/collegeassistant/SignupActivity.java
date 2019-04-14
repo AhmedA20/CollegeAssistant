@@ -30,6 +30,7 @@ public class SignupActivity extends AppCompatActivity {
 
     Button submit;
     EditText nameView, yearView, depView, titleView;
+    EditText mail, pass, rePass;
 
     static final String TAG = "SignupActivity";
 
@@ -40,6 +41,9 @@ public class SignupActivity extends AppCompatActivity {
 
         submit    = findViewById(R.id.submit);
         nameView  = findViewById(R.id.Name);
+        mail      = findViewById(R.id.e);
+        pass      = findViewById(R.id.pass);
+        rePass    =  findViewById(R.id.repass);
         yearView  = findViewById(R.id.Year);
         depView   = findViewById(R.id.dep);
         titleView = findViewById(R.id.title);
@@ -53,7 +57,9 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(valid()){
-                    checkForRespond();
+                    //checkForRespond();
+                    //todo: cloud signing is disabled
+                    Toast.makeText(SignupActivity.this,"Cloud signing disabled switch to logIn",Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -171,6 +177,9 @@ public class SignupActivity extends AppCompatActivity {
         boolean valid =true;
 
         String name = nameView.getText().toString();
+        String mail = this.mail.getText().toString();
+        String pass = this.pass.getText().toString();
+        String repass = rePass.getText().toString();
         String year = yearView.getText().toString();
         String dep = depView.getText().toString();
         String title = titleView.getText().toString();
@@ -183,8 +192,30 @@ public class SignupActivity extends AppCompatActivity {
             nameView.setError(null);
         }
 
+        if (mail.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(mail).matches()) {
+            this.mail.setError("enter a valid email address");
+            valid = false;
+        } else {
+            this.mail.setError(null);
+        }
+
+
+        if (pass.isEmpty() || pass.length() < 4 || pass.length() > 10) {
+            this.pass.setError("between 4 and 10 alphanumeric characters");
+            valid = false;
+        } else {
+            this.pass.setError(null);
+        }
+
+        if (repass.isEmpty() || repass.length() < 4 || repass.length() > 10 || !(repass.equals(pass))) {
+            rePass.setError("Password Do not match");
+            valid = false;
+        } else {
+            rePass.setError(null);
+        }
+
         if (year.isEmpty()) {
-            yearView.setError("Enter Valid Address");
+            yearView.setError("Enter Enrollment Year");
             valid = false;
         } else {
             yearView.setError(null);
@@ -192,14 +223,14 @@ public class SignupActivity extends AppCompatActivity {
 
 
         if (dep.isEmpty()) {
-            depView.setError("enter a valid email address");
+            depView.setError("enter a valid department name");
             valid = false;
         } else {
             depView.setError(null);
         }
 
         if (title.isEmpty()) {
-            titleView.setError("Enter Valid Mobile Number");
+            titleView.setError("Enter Sub Department name");
             valid = false;
         } else {
             titleView.setError(null);
