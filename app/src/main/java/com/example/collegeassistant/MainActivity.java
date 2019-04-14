@@ -62,7 +62,9 @@ public class MainActivity extends AppCompatActivity {
         log.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                checkForResult();
+               //checkForResult();
+                //todo: cloud signing disabled
+                startActivity(new Intent(MainActivity.this,HomeActivity.class));
             }
         });
 
