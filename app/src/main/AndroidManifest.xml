@@ -2,26 +2,24 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.collegeassistant">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/applogo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AttendanceActivity"></activity>
-        <activity android:name=".TableActivity" />
-        <activity android:name=".SubjectActivity" />
-        <activity android:name=".ChatActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".SignupActivity" />
-        <activity android:name=".MainActivity" />
-        <activity
-            android:name=".IsLoggedIn"
-            android:theme="@style/SplashTheme">
+        <activity android:name=".Auth.Signup2Activity"></activity>
+        <activity android:name=".Attendance.AttendanceActivity" />
+        <activity android:name=".Table.TableActivity" />
+        <activity android:name=".Subject.SubjectActivity" />
+        <activity android:name=".Chat.ChatActivity" />
+        <activity android:name=".Auth.SignupActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

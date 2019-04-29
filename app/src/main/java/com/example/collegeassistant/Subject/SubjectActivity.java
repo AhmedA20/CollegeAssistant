@@ -1,7 +1,9 @@
-package com.example.collegeassistant;
+package com.example.collegeassistant.Subject;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.collegeassistant.R;
 
 public class SubjectActivity extends AppCompatActivity {
 

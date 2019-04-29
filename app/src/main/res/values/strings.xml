@@ -4,9 +4,24 @@
     <string name="sign_up">Sign Up</string>
     <string name="forget_password">Forget Password</string>
     <string name="log_in">LOG IN</string>
+    <string name="googleSigning">SignIn with google</string>
     <string name="e_mail">E-Mail</string>
-    <string name="login">Login</string>
+    <string name="login">Welcome to College Assistant! </string>
     <string name="sign_up1">SIGN UP</string>
     <string name="already_have_account_login">Already have Account? LOGIN</string>
+    <string name="send_button_label">SEND</string>
+    <string name="sign_out">Sign Out</string>
+
+    <!-- spinner test list.  -->
+    <string-array name="Subject">
+        <item>Solid</item>
+        <item>Nuclear</item>
+        <item>Electronics</item>
+        <item>Low Temperature</item>
+        <item>Theory pf computation</item>
+        <item>Compiler design</item>
+        <item>Networking</item>
+        <item>Image processing</item>
+    </string-array>
 
 </resources>
