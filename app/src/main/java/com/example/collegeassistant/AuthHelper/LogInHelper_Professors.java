@@ -35,8 +35,8 @@ public class LogInHelper_Professors {
     }
 
     // --- DELETE ---
-    public void deleteUser(String uid) {
-        helper.getUsersCollection().document(uid).delete();
+    public Task<Void> deleteUser(String uid) {
+        return helper.getUsersCollection().document(uid).delete();
     }
 
 
