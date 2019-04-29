@@ -51,7 +51,9 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
 
-
+        //---------------------------------------------------------
+        //----------------Start Auth Flow--------------------------
+        //---------------------------------------------------------
         if(mUser!=null){
             startActivity(new Intent(this, HomeActivity.class));
         }else{
@@ -63,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                             .setAuthMethodPickerLayout(customLayout)
                             .build(),
                     RC_SIGN_IN);
-        }
+        }//end if
     }//end onCreate
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -78,10 +80,9 @@ public class LoginActivity extends AppCompatActivity {
                 // Sign in failed
                 if (response == null) {
                     // User pressed back button
-
+                    setContentView(R.layout.activity_login);
                     return;
                 }
-
                 if (response.getError().getErrorCode() == ErrorCodes.NO_NETWORK) {
 
                     return;
