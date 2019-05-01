@@ -7,10 +7,12 @@ import android.util.Log;
 import android.view.View;
 
 //local package
+import com.example.collegeassistant.AuthHelper.LogInHelper;
 import com.example.collegeassistant.Home.HomeActivity;
 import com.example.collegeassistant.R;
 
 //Firbase libs
+import com.example.collegeassistant.UserHelper.User;
 import com.firebase.ui.auth.AuthMethodPickerLayout;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.BuildConfig;
@@ -18,6 +20,7 @@ import com.firebase.ui.auth.ErrorCodes;
 import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.FirebaseUserMetadata;
 
 import java.util.Arrays;
 import java.util.List;
@@ -25,10 +28,14 @@ import java.util.List;
 public class LoginActivity extends AppCompatActivity {
     private static final int RC_SIGN_IN = 1;
     private static final String TAG = "LoginActivity";
+    private String UID;
 
 
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
+
+    private LogInHelper logInHelper = new LogInHelper();
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +83,10 @@ public class LoginActivity extends AppCompatActivity {
 
             // Successfully signed in
             if (resultCode == RESULT_OK) {
+                mAuth = FirebaseAuth.getInstance();
+                mUser = mAuth.getCurrentUser();
+                UID = mUser.getUid();
+                status(UID);
             } else {
                 // Sign in failed
                 if (response == null) {
@@ -91,6 +102,30 @@ public class LoginActivity extends AppCompatActivity {
 
                 Log.e(TAG, "Sign-in error: ", response.getError());
             }
+        }
+    }
+
+    //check if the user is recent or newly logged in
+    public boolean isNewSignUp(){
+        FirebaseUserMetadata metadata = mAuth.getCurrentUser().getMetadata();
+        return metadata.getCreationTimestamp() == metadata.getLastSignInTimestamp();
+    }
+
+    //handle the result if the user is new
+    private void status(String uid){
+        if(isNewSignUp()){//creates new enTry to be checked later if the user is new
+            logInHelper.createUser(UID,null,false,true);
+        }else{
+            registered(UID);
+        }
+    }
+
+    private void registered(String uid){//if user is not registered
+
+        if(logInHelper.getUser(uid).getIsNew()){
+            startActivity(new Intent(this,Signup2Activity.class));
+        }else{
+            startActivity(new Intent(this, HomeActivity.class));
         }
     }
 

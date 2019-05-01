@@ -35,6 +35,7 @@ public class StudentHelper {
     }
 
     // --- UPDATE ---
+    // --- Create more update methods to update more data related t the user
     public Task<Void> updateStudentName(String username, String uid,String year, String department) {
         return helper.getUsersCollection(year, department).document(uid).update("username", username);
     }

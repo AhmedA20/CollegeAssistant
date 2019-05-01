@@ -37,10 +37,12 @@ public class ProfessorHelper {
     }
 
     // --- UPDATE ---
+    // --- Create more update methods to update more data related t the user
     public Task<Void> updateProfessorName(String username, String uid, String assignedDepartment) {
         DEPARTMENT_NAME = assignedDepartment;
         return helper.getUsersCollection().document(uid).update("username", username);
     }
+
 
     public Task<Void> updateIsProfessor(String uid, Boolean IsProfessor, String assignedDepartment) {
         DEPARTMENT_NAME = assignedDepartment;

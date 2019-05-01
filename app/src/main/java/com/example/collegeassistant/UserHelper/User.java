@@ -1,5 +1,6 @@
 package com.example.collegeassistant.UserHelper;
 
+import com.google.firebase.database.annotations.NotNull;
 import com.google.firebase.database.annotations.Nullable;
 
 
@@ -8,29 +9,37 @@ public class User {
     @Nullable private String uid;
     @Nullable private String username;
     @Nullable private String urlPicture;
-    private boolean isNew;
+    @Nullable private boolean isProfessor;
+    @NotNull private boolean isNew;
 
     //---Student Specific
-    private String eduYear;//----corresponds to grade the year the student is assigned to.
-    private String department;//---- the department the student assigned to.
+    @Nullable private String eduYear;//----corresponds to grade the year the student is assigned to.
+    @Nullable private String department;//---- the department the student assigned to.
 
     //---Professor specific
-    private String assignedDepartment;
+    @Nullable private String assignedDepartment;
 
     public User() { }
 
+    //used for submitting new users only
+    /*public User(boolean isNew){
+        this.isNew = isNew;
+    }*/
+
     //----Abstract Student
-    public User(String uid, String year,String department, boolean isNew) {
+    public User(String uid, String year,String department,boolean isProfessor,boolean isNew) {
         this.uid = uid;
         this.eduYear = year;
         this.department = department;
+        this.isProfessor = isProfessor;
         this.isNew = isNew;
     }
 
     //----Abstract Professor
-    public User(String uid, String assignedDepartment, boolean isNew) {
+    public User(String uid, String assignedDepartment, boolean isProfessor, boolean isNew) {
         this.uid = uid;
         this.assignedDepartment = assignedDepartment;
+        this.isProfessor = isProfessor;
         this.isNew = isNew;
     }
 
@@ -61,6 +70,7 @@ public class User {
     public String getDepartment() { return department; }
     public String getEduYear() { return eduYear; }
     public boolean getIsNew(){return isNew;}
+    public boolean getIsProfessor(){return isProfessor;}
 
     // --- SETTERS ---
     public void setUsername(String username) { this.username = username; }
@@ -70,5 +80,6 @@ public class User {
     public void setDepartment(String department) { this.department = department; }
     public void setEduYear(String eduYear) { this.eduYear = eduYear; }
     public void setIsNew(boolean isNew){ this.isNew = isNew;}
+    public void setIsProfessor(boolean isProfessor){ this.isProfessor = isProfessor;}
 
 }

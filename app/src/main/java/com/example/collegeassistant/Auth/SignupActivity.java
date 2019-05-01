@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.collegeassistant.MainActivity;
+import com.example.collegeassistant.Home.HomeActivity;
 import com.example.collegeassistant.R;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,6 +19,7 @@ import butterknife.ButterKnife;
 
 public class SignupActivity extends AppCompatActivity {
 
+    //TODO:VIEWS RELATED THE ORIGINAL SIGNUP FORM ENABLE IF NEEDED
     @BindView(R.id.submit) Button submit;
     @BindView(R.id.Name) EditText nameView;
     @BindView(R.id.e) EditText mail;
@@ -64,7 +65,7 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     public void toIn(View view){
-        startActivity(new Intent(SignupActivity.this, MainActivity.class));
+        startActivity(new Intent(SignupActivity.this, HomeActivity.class));
     }
 
 
