@@ -160,14 +160,16 @@
                 android:layout_height="wrap_content"
                 android:text="Professor"
                 android:fontFamily="sans-serif-light"
-                android:onClick="onRadioButtonClicked"/>
+                android:onClick="onRadioButtonClicked"
+                android:layout_marginRight="8dp"/>
             <RadioButton
                 android:id="@+id/radio_student"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Student"
                 android:fontFamily="sans-serif-light"
-                android:onClick="onRadioButtonClicked"/>
+                android:onClick="onRadioButtonClicked"
+                android:checked="true"/>
         </RadioGroup>
 
         <Button
