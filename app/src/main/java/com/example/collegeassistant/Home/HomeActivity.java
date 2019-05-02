@@ -23,13 +23,13 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.activity_home);
 
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
 
         if(mUser!=null){//attention : NULL POINTER EXCEPTION MAYBE PRESENT
-            setContentView(R.layout.activity_home);
+
         }else{
             startActivity(new Intent(this, LoginActivity.class));
         }

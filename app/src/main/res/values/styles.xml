@@ -10,10 +10,6 @@
     <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="SplashTheme" parent="AppTheme">
-        <item name="android:windowBackground">@drawable/splash</item>
-    </style>
-
     <!--text view dimensions. -->
     <style name="textView_uniDiem" parent="">
         <item name="android:layout_height">wrap_content</item>
