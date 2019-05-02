@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.RequestManager;
-import com.example.collegeassistant.MessageHelper.Message;
+import com.example.collegeassistant.Models.Message;
 import com.example.collegeassistant.R;
 
 import java.text.DateFormat;

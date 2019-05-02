@@ -10,10 +10,10 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.ScrollView;
 
-import com.example.collegeassistant.AuthHelper.LogInHelper;
+import com.example.collegeassistant.api.AuthHelper.LogInHelper;
 import com.example.collegeassistant.R;
-import com.example.collegeassistant.UserHelper.ProfessorHelper;
-import com.example.collegeassistant.UserHelper.StudentHelper;
+import com.example.collegeassistant.api.UserHelper.ProfessorHelper;
+import com.example.collegeassistant.api.UserHelper.StudentHelper;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -47,7 +47,6 @@ public class Signup2Activity extends AppCompatActivity {
     FirebaseUser mUser;
 
     //local package fields
-    LogInHelper newUser = new LogInHelper();
     ProfessorHelper professorHelper = new ProfessorHelper();
     StudentHelper studentHelper = new StudentHelper();
     //data entry fields
@@ -71,12 +70,12 @@ public class Signup2Activity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     if(validPFS()&&isProfessor){//professor data entry
-                        newUser.deleteUser(mUser.getUid());
-                        newUser.createUser(mUser.getUid(),dep,isProfessor,false);
+                        LogInHelper.deleteUser(mUser.getUid());
+                        LogInHelper.createUser(mUser.getUid(),dep,isProfessor,false);
                         professorHelper.createProfessor(mUser.getUid(),name,null,dep);
                     }else if(validSTD()&&!isProfessor){//student data entry
-                        newUser.deleteUser(mUser.getUid());
-                        newUser.createUser(mUser.getUid(),year,dep,isProfessor,false);
+                        LogInHelper.deleteUser(mUser.getUid());
+                        LogInHelper.createUser(mUser.getUid(),year,dep,isProfessor,false);
                         studentHelper.createStudent(mUser.getUid(),name,null,year,dep);
                     }
                 }

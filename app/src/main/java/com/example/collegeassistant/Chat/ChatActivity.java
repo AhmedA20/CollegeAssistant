@@ -16,7 +16,7 @@ import android.widget.ProgressBar;
 
 
 import com.bumptech.glide.Glide;
-import com.example.collegeassistant.MessageHelper.Message;
+import com.example.collegeassistant.Models.Message;
 import com.example.collegeassistant.MessageHelper.MessageHelper;
 import com.example.collegeassistant.R;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -35,6 +35,7 @@ public class ChatActivity extends AppCompatActivity {
     @BindView(R.id.messageEditText) EditText mMessageEditText;
     @BindView(R.id.sendButton) Button mSendButton;
 
+
     private MessageAdapter mAdapter;
 
     private static final String CHAT = "chat";
@@ -49,6 +50,7 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
 

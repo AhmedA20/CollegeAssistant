@@ -15,8 +15,11 @@
         <activity android:name=".Table.TableActivity" />
         <activity android:name=".Subject.SubjectActivity" />
         <activity android:name=".Chat.ChatActivity" />
+        <activity android:name=".Grades.GradesActivity"/>
+        <activity android:name=".Home.HomeActivity"/>
         <activity android:name=".Auth.SignupActivity" />
         <activity android:name=".Auth.Signup2Activity" />
+        <activity android:name=".Auth.LoginActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

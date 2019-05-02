@@ -7,12 +7,12 @@ import android.util.Log;
 import android.view.View;
 
 //local package
-import com.example.collegeassistant.AuthHelper.LogInHelper;
+import com.example.collegeassistant.api.AuthHelper.LogInHelper;
 import com.example.collegeassistant.Home.HomeActivity;
 import com.example.collegeassistant.R;
 
 //Firbase libs
-import com.example.collegeassistant.UserHelper.User;
+import com.example.collegeassistant.Models.User;
 import com.firebase.ui.auth.AuthMethodPickerLayout;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.BuildConfig;
@@ -34,13 +34,11 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
 
-    private LogInHelper logInHelper = new LogInHelper();
-    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_auth_ui);
 
         //------------------------------------------------------------
         //---------------Auth Flow Configurations---------------------
@@ -86,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                 mAuth = FirebaseAuth.getInstance();
                 mUser = mAuth.getCurrentUser();
                 UID = mUser.getUid();
-                status(UID);
+                status();
             } else {
                 // Sign in failed
                 if (response == null) {
@@ -112,9 +110,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     //handle the result if the user is new
-    private void status(String uid){
+    private void status(){
         if(isNewSignUp()){//creates new enTry to be checked later if the user is new
-            logInHelper.createUser(UID,null,false,true);
+            LogInHelper.createUser(UID,null,false,true);
+            registered(UID);
+
+
         }else{
             registered(UID);
         }
@@ -122,7 +123,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void registered(String uid){//if user is not registered
 
-        if(logInHelper.getUser(uid).getIsNew()){
+        if(LogInHelper.getUser(uid).getIsNew()){
             startActivity(new Intent(this,Signup2Activity.class));
         }else{
             startActivity(new Intent(this, HomeActivity.class));

@@ -1,4 +1,4 @@
-package com.example.collegeassistant.UserHelper;
+package com.example.collegeassistant.Models;
 
 import com.google.firebase.database.annotations.NotNull;
 import com.google.firebase.database.annotations.Nullable;
