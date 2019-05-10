@@ -1,16 +1,15 @@
 package com.example.collegeassistant.api.AuthHelper;
 
-import com.example.collegeassistant.Models.User;
+
+import com.example.collegeassistant.models.User;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LogInHelper {
-
-
+    private static final String TAG = "LogInHelper";
     private static final String Collection = "new_users_journal";
-
 
     // --- COLLECTION REFERENCE ---
     public static CollectionReference getUsersCollection(){
@@ -19,27 +18,29 @@ public class LogInHelper {
     }
 
     // --- create journal entry "User"---"rolled to student later"
-    public static Task<Void> createUser(String uid, String year,String department,boolean isProfessor,boolean isNew) {
-        User abstractSTD = new User(uid,year,department,isProfessor,isNew);
+    public static Task<Void> createUser(String uid, String year,String department,boolean isProfessor) {
+        User abstractSTD = new User(uid,year,department,isProfessor);
         return LogInHelper.getUsersCollection().document(uid).set(abstractSTD);
     }
     // --- create journal entry "User"---"rolled to professor later"
-    public static Task<Void> createUser(String uid, String department,boolean isProfessor,boolean isNew) {
-        User abstractSTD = new User(uid,department,isProfessor,isNew);
+    public static Task<Void> createUser(String uid, String department,boolean isProfessor) {
+        User abstractSTD = new User(uid,department,isProfessor);
         return LogInHelper.getUsersCollection().document(uid).set(abstractSTD);
     }
 
     // --- GET ---
-    public static Task<DocumentSnapshot> getUserFromDB(String uid){
+   public static Task<DocumentSnapshot> getUserFromDB(String uid){
         return LogInHelper.getUsersCollection().document(uid).get();
     }
-    public static User getUser(String uid){
-        DocumentSnapshot snapshot = getUserFromDB(uid).getResult();
-        return snapshot.toObject(User.class);
+
+
+    // ---UPDATE---
+    public static Task<Void> updateIsNew(String uid,boolean isNew){
+        return LogInHelper.getUsersCollection().document(uid).update("isNew",isNew);
     }
 
     // --- DELETE ---
-    public static void deleteUser(String uid) {
-        LogInHelper.getUsersCollection().document(uid).delete();
+    public static Task<Void> deleteUser(String uid) {
+        return LogInHelper.getUsersCollection().document(uid).delete();
     }
 }

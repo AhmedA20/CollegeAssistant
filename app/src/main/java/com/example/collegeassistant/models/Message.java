@@ -1,6 +1,5 @@
-package com.example.collegeassistant.Models;
+package com.example.collegeassistant.models;
 
-import com.example.collegeassistant.Models.User;
 import com.google.firebase.firestore.ServerTimestamp;
 
 import java.util.Date;

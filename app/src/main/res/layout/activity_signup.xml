@@ -5,9 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/grad_bg"
+    android:animateLayoutChanges="true"
     android:padding="8dp"
     android:orientation="vertical"
-    tools:context=".Auth.SignupActivity">
+    tools:context=".authentication.SignupActivity">
 
     <ImageView
         android:id="@+id/logo1"
@@ -28,156 +29,98 @@
         android:text="@string/sign_up1"
         android:textColor="@color/white"
         android:textSize="25sp"
-        android:textStyle="bold"
-        />
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
+        android:textStyle="bold" />
+        <ScrollView
             android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <EditText
+            style="@style/signup"
+            android:id="@+id/Name"
+            android:hint="NAME" />
+
+        <EditText
+            style="@style/signup"
+            android:id="@+id/e"
+            android:hint="@string/e_mail" />
+
+        <EditText
+            style="@style/signup"
+            android:id="@+id/pass"
+            android:hint="@string/password" />
+
+        <EditText
+            style="@style/signup"
+            android:id="@+id/repass"
+            android:hint="Retype password" />
+
+        <EditText
+            style="@style/signup"
+            android:id="@+id/Year"
+            android:hint="Year"
+            android:visibility="visible"/>
+
+        <EditText
+            style="@style/signup"
+            android:id="@+id/department"
+            android:hint="Department" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp"
-            >
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginBottom="16dp"
-                android:id="@+id/Name"
-                android:background="@drawable/et_bg"
-                android:fontFamily="sans-serif-light"
-                android:hint="NAME"
-                android:inputType="text"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:textColor="@color/white"
-                android:textSize="15sp" />
-
-
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/et_bg"
-                android:fontFamily="sans-serif-light"
-                android:hint="@string/e_mail"
-                android:inputType="textEmailAddress"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                android:id="@+id/e"/>
-
-
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/et_bg"
-                android:fontFamily="sans-serif-light"
-                android:hint="@string/password"
-                android:inputType="textPassword"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                android:id="@+id/pass"/>
-
-
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/et_bg"
-                android:fontFamily="sans-serif-light"
-                android:hint="Retype password"
-                android:inputType="textPassword"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                android:id="@+id/repass"/>
-
-
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/et_bg"
-                android:fontFamily="sans-serif-light"
-                android:hint="Year"
-                android:inputType="text"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                android:id="@+id/Year"/>
-
-
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/et_bg"
-                android:fontFamily="sans-serif-light"
-                android:hint="Department"
-                android:inputType="text"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                android:id="@+id/dep"/>
-
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/et_bg"
-                android:fontFamily="sans-serif-light"
-                android:hint="Title"
-                android:inputType="text"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                android:id="@+id/title"/>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/sign_up"
-                android:fontFamily="sans-serif-medium"
-                android:paddingLeft="70dp"
-                android:paddingRight="70dp"
-                android:background="@drawable/bt_bg"
-                android:textColor="@color/white"
-                android:textAllCaps="false"
-                android:textSize="16sp"
-                android:layout_gravity="center"
-                android:id="@+id/submit"/>
-            <Button
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/radio_professor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:background="@color/transparent"
-                android:fontFamily="sans-serif-light"
-                android:layout_gravity="center"
-                android:text="@string/already_have_account_login"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:onClick="toIn"/>
-        </LinearLayout>
-    </ScrollView>
+                android:text="Professor"
+                android:layout_marginRight="8dp"
+                android:onClick="onRadioButtonClicked"/>
+            <RadioButton
+                android:id="@+id/radio_student"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Student"
+                android:checked="true"
+                android:onClick="onRadioButtonClicked"/>
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/sign_up"
+            android:fontFamily="sans-serif-medium"
+            android:paddingLeft="70dp"
+            android:paddingRight="70dp"
+            android:background="@drawable/bt_bg"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            android:onClick="signup"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:fontFamily="sans-serif-light"
+            android:layout_gravity="center"
+            android:text="@string/already_have_account_login"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:onClick="toIn"/>
+    </LinearLayout>
+        </ScrollView>
 
 
 
 </LinearLayout>
-

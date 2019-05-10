@@ -1,4 +1,4 @@
-package com.example.collegeassistant.Chat;
+package com.example.collegeassistant.chat;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.RequestManager;
-import com.example.collegeassistant.Models.Message;
+import com.example.collegeassistant.models.Message;
 import com.example.collegeassistant.R;
 
 import java.text.DateFormat;

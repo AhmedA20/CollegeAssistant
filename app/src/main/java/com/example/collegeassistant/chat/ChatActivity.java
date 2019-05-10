@@ -1,5 +1,5 @@
 
-package com.example.collegeassistant.Chat;
+package com.example.collegeassistant.chat;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,9 +16,10 @@ import android.widget.ProgressBar;
 
 
 import com.bumptech.glide.Glide;
-import com.example.collegeassistant.Models.Message;
-import com.example.collegeassistant.MessageHelper.MessageHelper;
+import com.example.collegeassistant.models.Message;
+import com.example.collegeassistant.message_helper.MessageHelper;
 import com.example.collegeassistant.R;
+
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

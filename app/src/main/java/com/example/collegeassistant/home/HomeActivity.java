@@ -1,18 +1,21 @@
-package com.example.collegeassistant.Home;
+package com.example.collegeassistant.home;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 
-import com.example.collegeassistant.Attendance.AttendanceActivity;
-import com.example.collegeassistant.Auth.LoginActivity;
-import com.example.collegeassistant.Chat.ChatActivity;
-import com.example.collegeassistant.Grades.GradesActivity;
+
 import com.example.collegeassistant.R;
-import com.example.collegeassistant.Subject.SubjectActivity;
-import com.example.collegeassistant.Table.TableActivity;
+import com.example.collegeassistant.attendance.AttendanceActivity;
+import com.example.collegeassistant.authentication.LoginActivity;
+import com.example.collegeassistant.chat.ChatActivity;
+import com.example.collegeassistant.grades.GradesActivity;
+import com.example.collegeassistant.subject.SubjectActivity;
+import com.example.collegeassistant.table.TableActivity;
+
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -29,7 +32,6 @@ public class HomeActivity extends AppCompatActivity {
         mUser = mAuth.getCurrentUser();
 
         if(mUser!=null){//attention : NULL POINTER EXCEPTION MAYBE PRESENT
-
         }else{
             startActivity(new Intent(this, LoginActivity.class));
         }

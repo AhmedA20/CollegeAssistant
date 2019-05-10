@@ -1,15 +1,15 @@
-package com.example.collegeassistant.Table;
+package com.example.collegeassistant.subject;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.collegeassistant.R;
 
-public class TableActivity extends AppCompatActivity {
+public class SubjectActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_table);
+        setContentView(R.layout.activity_subject);
     }
 }

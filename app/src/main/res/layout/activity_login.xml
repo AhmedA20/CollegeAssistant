@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
     android:background="@drawable/grad_bg"
-    tools:context=".Auth.LoginActivity">
+    tools:context=".authentication.LoginActivity">
     <RelativeLayout
         android:id="@+id/relative"
         android:layout_width="wrap_content"
@@ -58,6 +58,7 @@
                         android:fontFamily="sans-serif-light"
                         />
                     <EditText
+                        android:id="@+id/mail_address"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginTop="5dp"
@@ -82,9 +83,9 @@
                         android:textAllCaps="true"
                         android:textSize="15sp"
                         android:textColor="@color/white"
-                        android:fontFamily="sans-serif-light"
-                        />
+                        android:fontFamily="sans-serif-light" />
                     <EditText
+                        android:id="@+id/log_password"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginTop="5dp"
@@ -94,8 +95,7 @@
                         android:fontFamily="sans-serif-light"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
-                        android:background="@drawable/et_bg"
-                        />
+                        android:background="@drawable/et_bg" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -113,22 +113,8 @@
                 android:background="@drawable/bt_bg"
                 android:textColor="@color/white"
                 android:textAllCaps="true"
-                android:textSize="16sp" />
-            <Button
-                android:id="@+id/googleSignIn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/logbutton"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="4dp"
-                android:text="@string/googleSigning"
-                android:fontFamily="sans-serif-medium"
-                android:paddingLeft="70dp"
-                android:paddingRight="70dp"
-                android:background="@color/transparent"
-                android:textColor="@color/white"
-                android:textAllCaps="false"
-                android:textSize="14sp" />
+                android:textSize="16sp"
+                android:onClick="login"/>
         </RelativeLayout>
     </RelativeLayout>
     <RelativeLayout
@@ -137,7 +123,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp">
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="16dp">
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

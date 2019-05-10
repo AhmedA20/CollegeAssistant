@@ -1,4 +1,4 @@
-package com.example.collegeassistant.Chat;
+package com.example.collegeassistant.chat;
 
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.RequestManager;
-import com.example.collegeassistant.Models.Message;
+import com.example.collegeassistant.models.Message;
 import com.example.collegeassistant.R;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;

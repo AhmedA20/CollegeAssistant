@@ -1,6 +1,5 @@
-package com.example.collegeassistant.MessageHelper;
+package com.example.collegeassistant.message_helper;
 
-import com.example.collegeassistant.MessageHelper.ChatHelper;
 import com.google.firebase.firestore.Query;
 
 public class MessageHelper {//-----organizes queries-------
