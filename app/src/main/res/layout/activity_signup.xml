@@ -65,7 +65,6 @@
             android:id="@+id/Year"
             android:hint="Year"
             android:visibility="visible"/>
-
         <EditText
             style="@style/signup"
             android:id="@+id/department"

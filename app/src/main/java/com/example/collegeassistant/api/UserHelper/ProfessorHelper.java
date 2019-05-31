@@ -11,49 +11,39 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class ProfessorHelper {
 
     private static final String COLLECTION_NAME = "science_staff";
-    private String DEPARTMENT_NAME ;
-    private static final String SUB_COLLECTION_NAME = "professors_staff";
 
-    private ProfessorHelper helper = new ProfessorHelper();
+
 
     // --- COLLECTION REFERENCE ---
-    private CollectionReference getUsersCollection(){
+    private static CollectionReference getUsersCollection(){
         return FirebaseFirestore.getInstance()
-                .collection(COLLECTION_NAME)
-                .document(DEPARTMENT_NAME)
-                .collection(SUB_COLLECTION_NAME);
+                .collection(COLLECTION_NAME);
     }
 
     // --- CREATE ---
-    public Task<Void> createProfessor(String uid, String username, String urlPicture, String assignedDepartment) {
-        DEPARTMENT_NAME = assignedDepartment;
-        User userToCreate = new User(uid, username, urlPicture, assignedDepartment);
-        return helper.getUsersCollection().document(uid).set(userToCreate);
+    public static Task<Void> createProfessor(String uid, User user) {
+        return ProfessorHelper.getUsersCollection().document(uid).set(user);
     }
 
     // --- GET ---
-    public Task<DocumentSnapshot> getProfessor(String uid, String assignedDepartment){
-        DEPARTMENT_NAME = assignedDepartment;
-        return helper.getUsersCollection().document(uid).get();
+    public static Task<DocumentSnapshot> getProfessor(String uid){
+        return ProfessorHelper.getUsersCollection().document(uid).get();
     }
 
     // --- UPDATE ---
     // --- Create more update methods to update more data related t the user
-    public Task<Void> updateProfessorName(String username, String uid, String assignedDepartment) {
-        DEPARTMENT_NAME = assignedDepartment;
-        return helper.getUsersCollection().document(uid).update("username", username);
+    public static Task<Void> updateProfessorName(String username, String uid) {
+        return ProfessorHelper.getUsersCollection().document(uid).update("username", username);
     }
 
 
-    public Task<Void> updateIsProfessor(String uid, Boolean IsProfessor, String assignedDepartment) {
-        DEPARTMENT_NAME = assignedDepartment;
-        return helper.getUsersCollection().document(uid).update("isMentor", IsProfessor);
+    public static Task<Void> updateIsProfessor(String uid, Boolean IsProfessor) {
+        return ProfessorHelper.getUsersCollection().document(uid).update("isMentor", IsProfessor);
     }
 
     // --- DELETE ---
-    public  Task<Void> deleteUser(String uid, String assignedDepartment) {
-        DEPARTMENT_NAME = assignedDepartment;
-        return helper.getUsersCollection().document(uid).delete();
+    public  static Task<Void> deleteUser(String uid) {
+        return ProfessorHelper.getUsersCollection().document(uid).delete();
     }
 
 
