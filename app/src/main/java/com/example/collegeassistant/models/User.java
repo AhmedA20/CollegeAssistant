@@ -18,36 +18,24 @@ public class User {
     public User() { }
 
 
-    //----Abstract Student
-    public User(String uid, String year,String department,boolean isProfessor) {
-        this.uid = uid;
-        this.eduYear = year;
-        this.department = department;
-        this.isProfessor = isProfessor;
-    }
-
-    //----Abstract Professor
-    public User(String uid, String assignedDepartment, boolean isProfessor) {
-        this.uid = uid;
-        this.assignedDepartment = assignedDepartment;
-        this.isProfessor = isProfessor;
-    }
 
     //----Student Constructor
-    public User(String uid, String username, String urlPicture, String year,String department) {
+    public User(String uid, String username, String urlPicture, String year,String department, boolean isProfessor) {
         this.uid = uid;
         this.username = username;
         this.urlPicture = urlPicture;
         this.eduYear = year;
         this.department = department;
+        this.isProfessor = isProfessor;
     }
 
     //----Professor Constructor
-    public User(String uid, String username, String urlPicture, String assignedDepartment) {
+    public User(String uid, String username, String urlPicture, String assignedDepartment, boolean isProfessor) {
         this.uid = uid;
         this.username = username;
         this.urlPicture = urlPicture;
         this.assignedDepartment = assignedDepartment;
+        this.isProfessor = isProfessor;
     }
 
 

@@ -30,10 +30,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     //FIREBASE
-    implementation 'com.google.firebase:firebase-core:16.0.8'
-    implementation 'com.google.firebase:firebase-auth:16.2.1'
-    implementation 'com.firebaseui:firebase-ui-firestore:3.2.2'
-    implementation 'com.google.firebase:firebase-firestore:18.2.0'
+    implementation 'com.google.firebase:firebase-core:16.0.9'
+    implementation 'com.google.firebase:firebase-auth:17.0.0'
+    implementation 'com.firebaseui:firebase-ui-firestore:4.3.2'
+    implementation 'com.google.firebase:firebase-firestore:19.0.2'
     // Displaying images
     implementation 'com.github.bumptech.glide:glide:4.7.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'

@@ -1,4 +1,4 @@
-package com.example.collegeassistant.api.UserHelper;
+package com.example.collegeassistant.api.user_helper;
 
 
 

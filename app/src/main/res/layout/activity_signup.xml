@@ -53,22 +53,23 @@
         <EditText
             style="@style/signup"
             android:id="@+id/pass"
-            android:hint="@string/password" />
+            android:hint="@string/password"
+            android:inputType="textPassword"/>
 
         <EditText
             style="@style/signup"
             android:id="@+id/repass"
-            android:hint="Retype password" />
+            android:hint="Retype password"
+            android:inputType="textPassword"/>
 
-        <EditText
-            style="@style/signup"
-            android:id="@+id/Year"
-            android:hint="Year"
-            android:visibility="visible"/>
-        <EditText
-            style="@style/signup"
-            android:id="@+id/department"
-            android:hint="Department" />
+       <Spinner
+           style="@style/signup"
+           android:id="@+id/yearSpinner" />
+
+        <Spinner
+           style="@style/signup"
+            android:id="@+id/departmentSpinner" />
+
 
         <RadioGroup
             android:layout_width="wrap_content"
@@ -106,7 +107,7 @@
             android:textAllCaps="false"
             android:textSize="16sp"
             android:layout_gravity="center"
-            android:onClick="signup"/>
+            android:onClick="signup" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

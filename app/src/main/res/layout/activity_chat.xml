@@ -9,11 +9,10 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/reyclerview_message_list"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
+        android:layout_above="@id/layout_chatbox"
         android:layout_alignTop="@id/layout_chatbox">
     </android.support.v7.widget.RecyclerView>
 
@@ -21,9 +20,10 @@
         android:id="@+id/layout_chatbox"
         android:layout_width="match_parent"
         android:layout_height="38dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="4dp"
         android:orientation="horizontal"
-       android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/gradient_4">
 
         <ImageButton
             android:id="@+id/photoPickerButton"
@@ -38,10 +38,11 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
+            android:padding="2dp"
             android:layout_weight="1"
             android:background="@drawable/ed"
             android:focusable="true"
-            android:inputType="textMultiLine|textNoSuggestions" />
+            android:inputType="textMultiLine"/>
 
         <Button
             android:id="@+id/sendButton"

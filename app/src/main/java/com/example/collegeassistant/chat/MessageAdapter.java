@@ -16,21 +16,10 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class MessageAdapter extends FirestoreRecyclerAdapter<Message, MessageHolder> {
 
-    //todo:------------------WARNING-------------------
-    /*
-    1-UNKNOWN METHOD TO RETRIEVE MESSAGE DATA SAFELY
-    2-method chain (onBindViewHolder)--->(viewType)--->(onCreateViewHolder) ELSE you are screwed
-     */
-    //todo:------------------WARNING-------------------
-
 
     //FOR DATA
     private final RequestManager glide;
     private String uid;
-    private boolean isCurrentUser;
-
-    private static final int SENT = 0;
-    private static final int RECEIVED = 1;
 
 
     /**
@@ -52,23 +41,20 @@ public class MessageAdapter extends FirestoreRecyclerAdapter<Message, MessageHol
     }
 
 
-
-
-    //@param i == ViewType
     @NonNull
     @Override
     public MessageHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
 
-        View view;
-        if (i==SENT) {
-            view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_message_sent, parent, false);
-            return new MessageHolder(view, glide);
-        } else{
-            view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_message_received, parent, false);
-            return new MessageHolder(view, glide);
-        }
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_messages, parent, false);
+        return new MessageHolder(view, glide);
+    }
+
+    @Override
+    public void onDataChanged() {
+        // Called each time there is a new query snapshot. You may want to use this method
+        // to hide a loading spinner or check for the "no documents" state and update your UI.
+        // ...
     }
 
 

@@ -7,15 +7,19 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.collegeassistant.api.user_helper.UserHelper;
 import com.example.collegeassistant.home.HomeActivity;
 import com.example.collegeassistant.R;
-import com.example.collegeassistant.api.UserHelper.ProfessorHelper;
-import com.example.collegeassistant.api.UserHelper.StudentHelper;
+import com.example.collegeassistant.api.user_helper.ProfessorHelper;
+import com.example.collegeassistant.api.user_helper.StudentHelper;
 
 import com.example.collegeassistant.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -37,8 +41,10 @@ public class SignupActivity extends AppCompatActivity {
     @BindView(R.id.e) EditText mail;
     @BindView(R.id.pass) EditText pass;
     @BindView(R.id.repass) EditText rePass;
-    @BindView(R.id.Year) EditText yearView;
-    @BindView(R.id.department) EditText depView;
+    //TODO:TESTING NEW VIEWS
+    @BindView(R.id.yearSpinner) Spinner yearSpinner;
+    @BindView(R.id.departmentSpinner) Spinner departmentSpinner;
+
 
     ProgressDialog progressDialog;
 
@@ -63,9 +69,79 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         ButterKnife.bind(this);
+        populateSpinner();
         progressDialog = new ProgressDialog(SignupActivity.this,
                 R.style.AppTheme_Dark_Dialog);
     }//end onCreate
+
+    //spinner population method
+    private void populateSpinner(){
+
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.year, android.R.layout.simple_spinner_item);        //  Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        yearSpinner.setAdapter(adapter);
+        yearSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                year = (String)adapterView.getItemAtPosition(i);
+                populateSpinner2(year);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+    }
+
+    private void populateSpinner2(String year){
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.sectionC, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        departmentSpinner.setAdapter(adapter);
+        switch (year){
+            case "First Year":
+                populateOnSelection(R.array.first);
+                break;
+
+            case "Second Year":
+                populateOnSelection(R.array.second);
+                break;
+
+            case "Third Year":
+                populateOnSelection(R.array.third);
+                break;
+
+            case "Fourth Year":
+                populateOnSelection(R.array.third);
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    private void populateOnSelection(int ID){
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                ID, android.R.layout.simple_spinner_item);
+        //  Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        departmentSpinner.setAdapter(adapter);
+        departmentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                dep = (String)adapterView.getItemAtPosition(i);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+    }
 
     public void signup(View view){//TODO:assign to the onClick in xml for submit button
         if(valid()){
@@ -110,6 +186,7 @@ public class SignupActivity extends AppCompatActivity {
         finish();
     }
 
+    //todo:removed edittext controls disabled
     public void onRadioButtonClicked(View view) {
         // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();
@@ -118,13 +195,13 @@ public class SignupActivity extends AppCompatActivity {
             case R.id.radio_professor:
                 if (checked){
                     //enables professor container and disables student
-                    yearView.setVisibility(View.INVISIBLE);
+                    //yearView.setVisibility(View.INVISIBLE);
                     isProfessor = true;
                 }
                 break;
             case R.id.radio_student:
                 if (checked){
-                    yearView.setVisibility(View.VISIBLE);
+                    //yearView.setVisibility(View.VISIBLE);
                     isProfessor = false;
                 }
                 break;
@@ -139,8 +216,7 @@ public class SignupActivity extends AppCompatActivity {
         e_mail   = mail.getText().toString();
         e_pass   = pass.getText().toString();
         repass = rePass.getText().toString();
-        year   = yearView.getText().toString();
-        dep    = depView.getText().toString();
+
 
 
         if (name.isEmpty() || name.length() < 3) {
@@ -171,18 +247,14 @@ public class SignupActivity extends AppCompatActivity {
             rePass.setError(null);
         }
 
-        if (year.isEmpty()) {
-            yearView.setError("Enter Enrollment Year");
+        //todo:--------------->removed view error checking disabled
+        if (year=="Select Enrollment year!") {
+            Toast.makeText(this,"Select Enrollment year!",Toast.LENGTH_LONG).show();
             valid = false;
-        } else {
-            yearView.setError(null);
         }
 
-        if (dep.isEmpty()) {
-            depView.setError("enter a valid department name");
-            valid = false;
-        } else {
-            depView.setError(null);
+        if (dep=="Select department!") {
+            Toast.makeText(this,"Select department!",Toast.LENGTH_LONG).show();            valid = false;
         }
 
         return valid;
@@ -190,14 +262,15 @@ public class SignupActivity extends AppCompatActivity {
 
     //todo:memory leak found further testing will show why
     private void createProfessor(){
-        User user = new User(UID,name,null,dep);
-        ProfessorHelper.createProfessor(UID,user);
-
+        User user = new User(UID,name,null,dep,isProfessor);
+        //ProfessorHelper.createProfessor(UID,user);
+        UserHelper.createNew(UID,user);
     }//end professor
 
     private void createStudent(){
-        User user = new User(UID,name,null,year,dep);
-        StudentHelper.createStudent(UID,user);
+        User user = new User(UID,name,null,year,dep,isProfessor);
+        //StudentHelper.createStudent(UID,user);
+        UserHelper.createNew(UID,user);
     }//end Student
 
 

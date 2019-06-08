@@ -1,4 +1,4 @@
-package com.example.collegeassistant.message_helper;
+package com.example.collegeassistant.api.message_helper;
 
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
