@@ -16,6 +16,7 @@ import com.example.collegeassistant.R;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import butterknife.BindView;
@@ -95,7 +96,13 @@ public class MessageHolder extends RecyclerView.ViewHolder {
 
         //set time
         if(message.getDateCreated() != null) {
-            time.setText(this.convertDateToHour(message.getDateCreated()));
+            Calendar cal = Calendar. getInstance();
+            Date date=cal. getTime();
+            if(date.compareTo(message.getDateCreated())>0){
+                time.setText(this.convertDateToYears(message.getDateCreated()));
+            }else{
+                time.setText(this.convertDateToHour(message.getDateCreated()));
+            }
         }
 
         if(message.getUserSender()!=null) {
@@ -138,6 +145,11 @@ public class MessageHolder extends RecyclerView.ViewHolder {
 
     private String convertDateToHour(Date date){
         DateFormat dfTime = new SimpleDateFormat("HH:mm");
+        return dfTime.format(date);
+    }
+
+    private String convertDateToYears(Date date){
+        DateFormat dfTime = new SimpleDateFormat("dd/MM/yy");
         return dfTime.format(date);
     }
 }

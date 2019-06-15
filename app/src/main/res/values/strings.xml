@@ -25,7 +25,6 @@
     </string-array>
 
 
-
     <!--choose year-->
     <string-array name="yearC">
         <item>choose year</item>
@@ -35,6 +34,16 @@
         <item>Select department!</item>
     </string-array>    <!-- choose department-->
     <string name="department">choose department</string>
+
+    <string-array name="college_departments">
+        <item>Select department!</item>
+        <item>Chemistry</item>
+        <item>Plants</item>
+        <item>Physics</item>
+        <item>Zoology</item>
+        <item>Geology</item>
+        <item>Math and Computer Science</item>
+    </string-array>
 
     <string-array name="year">
         <item>Select Enrollment year!</item>

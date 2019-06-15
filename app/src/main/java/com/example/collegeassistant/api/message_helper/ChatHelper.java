@@ -10,6 +10,7 @@ public class ChatHelper {//---------fetches collections from firestore---------
 
         // --- COLLECTION REFERENCE ---
      public static CollectionReference getChatCollection(){
-         return FirebaseFirestore.getInstance().collection(COLLECTION_NAME);
+         return FirebaseFirestore.getInstance()
+                 .collection(COLLECTION_NAME);
      }
 }

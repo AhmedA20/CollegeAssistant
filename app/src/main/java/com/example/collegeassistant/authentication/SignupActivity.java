@@ -18,8 +18,6 @@ import android.widget.Toast;
 import com.example.collegeassistant.api.user_helper.UserHelper;
 import com.example.collegeassistant.home.HomeActivity;
 import com.example.collegeassistant.R;
-import com.example.collegeassistant.api.user_helper.ProfessorHelper;
-import com.example.collegeassistant.api.user_helper.StudentHelper;
 
 import com.example.collegeassistant.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -44,6 +42,7 @@ public class SignupActivity extends AppCompatActivity {
     //TODO:TESTING NEW VIEWS
     @BindView(R.id.yearSpinner) Spinner yearSpinner;
     @BindView(R.id.departmentSpinner) Spinner departmentSpinner;
+
 
 
     ProgressDialog progressDialog;
@@ -74,10 +73,9 @@ public class SignupActivity extends AppCompatActivity {
                 R.style.AppTheme_Dark_Dialog);
     }//end onCreate
 
-    //spinner population method
+
+
     private void populateSpinner(){
-
-
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.year, android.R.layout.simple_spinner_item);        //  Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -165,8 +163,8 @@ public class SignupActivity extends AppCompatActivity {
                                     createStudent();
                                 }
                                 Log.d(TAG, "createUserWithEmail:success--->Data");
-                                progressDialog.dismiss();
                                 startActivity(new Intent(SignupActivity.this,HomeActivity.class));
+                                progressDialog.dismiss();
                                 SignupActivity.this.finish();
                             }
                         }
@@ -194,14 +192,15 @@ public class SignupActivity extends AppCompatActivity {
         switch(view.getId()) {
             case R.id.radio_professor:
                 if (checked){
-                    //enables professor container and disables student
-                    //yearView.setVisibility(View.INVISIBLE);
+                    yearSpinner.setVisibility(View.GONE);
+                    departmentSpinner.setVisibility(View.GONE);
                     isProfessor = true;
                 }
                 break;
             case R.id.radio_student:
                 if (checked){
-                    //yearView.setVisibility(View.VISIBLE);
+                    yearSpinner.setVisibility(View.VISIBLE);
+                    departmentSpinner.setVisibility(View.VISIBLE);
                     isProfessor = false;
                 }
                 break;
@@ -248,13 +247,16 @@ public class SignupActivity extends AppCompatActivity {
         }
 
         //todo:--------------->removed view error checking disabled
-        if (year=="Select Enrollment year!") {
-            Toast.makeText(this,"Select Enrollment year!",Toast.LENGTH_LONG).show();
-            valid = false;
-        }
+        if(!isProfessor){
+            if (year.equals("Select Enrollment year!")) {
+                Toast.makeText(this,"Select Enrollment year!",Toast.LENGTH_LONG).show();
+                valid = false;
+            }
 
-        if (dep=="Select department!") {
-            Toast.makeText(this,"Select department!",Toast.LENGTH_LONG).show();            valid = false;
+            if (dep=="Select department!") {
+                Toast.makeText(this,"Select department!",Toast.LENGTH_LONG).show();
+                valid = false;
+            }
         }
 
         return valid;
@@ -262,14 +264,12 @@ public class SignupActivity extends AppCompatActivity {
 
     //todo:memory leak found further testing will show why
     private void createProfessor(){
-        User user = new User(UID,name,null,dep,isProfessor);
-        //ProfessorHelper.createProfessor(UID,user);
+        User user = new User(UID,name,null,isProfessor);
         UserHelper.createNew(UID,user);
     }//end professor
 
     private void createStudent(){
         User user = new User(UID,name,null,year,dep,isProfessor);
-        //StudentHelper.createStudent(UID,user);
         UserHelper.createNew(UID,user);
     }//end Student
 
